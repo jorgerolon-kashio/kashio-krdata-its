@@ -1,0 +1,51 @@
+{
+  "name": "kbatch-portal",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "prestart": "node scripts/generate-docs-manifest.js",
+    "start": "ng serve",
+    "prebuild": "node scripts/generate-docs-manifest.js",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true,
+    "overrides": [
+      {
+        "files": "*.html",
+        "options": {
+          "parser": "angular"
+        }
+      }
+    ]
+  },
+  "private": true,
+  "packageManager": "npm@11.6.2",
+  "dependencies": {
+    "@angular/common": "^21.1.0",
+    "@angular/compiler": "^21.1.0",
+    "@angular/core": "^21.1.0",
+    "@angular/forms": "^21.1.0",
+    "@angular/platform-browser": "^21.1.0",
+    "@angular/router": "^21.1.0",
+    "@azure/msal-angular": "^5.0.3",
+    "@azure/msal-browser": "^5.1.0",
+    "apexcharts": "^5.3.6",
+    "js-yaml": "^4.1.1",
+    "lucide-angular": "^0.563.0",
+    "ng-apexcharts": "^2.0.4",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "^0.16.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^21.1.2",
+    "@angular/cli": "^21.1.2",
+    "@angular/compiler-cli": "^21.1.0",
+    "@types/js-yaml": "^4.0.9",
+    "typescript": "~5.9.2"
+  }
+}

@@ -1,0 +1,21 @@
+node_modules/@angular/core/types/_discovery-chunk.d.ts(12,86): error TS2307: Cannot find module '@angular/core/primitives/di' or its corresponding type declarations.
+  There are types at '/Users/carlos/lab/KBATCH-IT-SERVICE-PORTAL/node_modules/@angular/core/types/primitives-di.d.ts', but this result could not be resolved under your current 'moduleResolution' setting. Consider updating to 'node16', 'nodenext', or 'bundler'.
+node_modules/@angular/platform-browser/types/platform-browser.d.ts(10,42): error TS2307: Cannot find module '@angular/common/http' or its corresponding type declarations.
+  There are types at '/Users/carlos/lab/KBATCH-IT-SERVICE-PORTAL/node_modules/@angular/common/types/http.d.ts', but this result could not be resolved under your current 'moduleResolution' setting. Consider updating to 'node16', 'nodenext', or 'bundler'.
+node_modules/rxjs/dist/types/internal/Observable.d.ts(117,35): error TS2585: 'Promise' only refers to a type, but is being used as a value here. Do you need to change your target library? Try changing the 'lib' compiler option to es2015 or later.
+src/app/pages/dashboard/dashboard.ts(163,34): error TS2550: Property 'includes' does not exist on type 'string'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2015' or later.
+src/app/pages/dashboard/dashboard.ts(164,44): error TS2550: Property 'includes' does not exist on type 'string'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2015' or later.
+src/app/pages/dashboard/dashboard.ts(187,34): error TS2550: Property 'includes' does not exist on type 'string'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2015' or later.
+src/app/services/apm.service.ts(2,28): error TS2307: Cannot find module '@angular/common/http' or its corresponding type declarations.
+  There are types at '/Users/carlos/lab/KBATCH-IT-SERVICE-PORTAL/node_modules/@angular/common/types/http.d.ts', but this result could not be resolved under your current 'moduleResolution' setting. Consider updating to 'node16', 'nodenext', or 'bundler'.
+src/app/services/apm.service.ts(24,24): error TS2550: Property 'fill' does not exist on type 'any[]'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2015' or later.
+src/app/services/apm.service.ts(25,24): error TS2550: Property 'fill' does not exist on type 'any[]'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2015' or later.
+src/app/services/apm.service.ts(73,48): error TS2339: Property 'data' does not exist on type 'unknown'.
+src/app/services/apm.service.ts(106,34): error TS2339: Property 'status' does not exist on type 'unknown'.
+src/app/services/apm.service.ts(106,55): error TS2339: Property 'status' does not exist on type 'unknown'.
+src/app/services/apm.service.ts(118,9): error TS2322: Type 'Observable<unknown>' is not assignable to type 'Observable<CriticalApiStatus[]>'.
+  Type '{}' is missing the following properties from type 'CriticalApiStatus[]': length, pop, push, concat, and 20 more.
+src/app/services/argo-monitoring.service.ts(2,28): error TS2307: Cannot find module '@angular/common/http' or its corresponding type declarations.
+  There are types at '/Users/carlos/lab/KBATCH-IT-SERVICE-PORTAL/node_modules/@angular/common/types/http.d.ts', but this result could not be resolved under your current 'moduleResolution' setting. Consider updating to 'node16', 'nodenext', or 'bundler'.
+src/app/services/argo-monitoring.service.ts(53,40): error TS2339: Property 'items' does not exist on type 'unknown'.
+src/app/services/argo-monitoring.service.ts(78,52): error TS2339: Property 'nodes' does not exist on type 'unknown'.

@@ -1,0 +1,258 @@
+openapi: 3.0.0
+info:
+  title: Kbatch API - Full Specification
+  description: Especificación completa de la API Kbatch incluyendo flujos de Importación, Exportación y tipos de proceso.
+  version: 1.0.0
+servers:
+  - url: "{{Base_url}}kmfef-kbatch/v1"
+    description: Servidor Principal
+  - url: "{{Local}}kmfef-kbatch/v1"
+    description: Servidor Local
+
+paths:
+  # --- CARPETA: USERS ---
+  /user-sync:
+    post:
+      tags: [Users]
+      summary: 1. CreateNewUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example: {"userPublicId": "scus_...", "userName": "Juan cas", "userEmail": "juancaa@gmail.com", "companyId": "cus_...", "serviceName": "KashioSec", "application": "Payin"}
+      responses:
+        '200': {description: OK}
+
+  /user-sync/{userId}:
+    get:
+      tags: [Users]
+      summary: 1.1 GetInfoUserByPublicId
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema: {type: string}
+      responses:
+        '200': {description: OK}
+
+  /user-sync/company/{companyId}:
+    get:
+      tags: [Users]
+      summary: 1.2 GetProcesByCompanyId
+      parameters:
+        - name: companyId
+          in: path
+          required: true
+          schema: {type: string}
+      responses:
+        '200': {description: OK}
+
+  /process-sync:
+    get:
+      tags: [Users]
+      summary: 1.3 GetProcessByFilters
+      parameters:
+        - name: company
+          in: query
+          schema: {type: string}
+        - name: application
+          in: query
+          schema: {type: string}
+      responses:
+        '200': {description: OK}
+
+  /file/seed-data:
+    post:
+      tags: [Users]
+      summary: 0. CrearTablaStatus
+      responses:
+        '200': {description: OK}
+
+  # --- CARPETA: IMPORT ---
+  /file/generate-presigned-url:
+    post:
+      tags: [Import]
+      summary: 1. CreatePresignedURL
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example: {"userId": "{{userId}}", "fileName": "prueba.xlsx", "processType": "5076e8fa..."}
+      responses:
+        '200': {description: OK}
+
+  # Endpoint especial: S3 Direct Upload
+  /upload-s3:
+      put:
+        tags: [Import]
+        summary: 2. UploadS3File (Subida a S3)
+        # Esto permite que la herramienta te deje cambiar la URL base
+        servers:
+          - url: "{dynamicPresignedUrl}"
+            variables:
+              dynamicPresignedUrl:
+                default: "https://s3.amazonaws.com/..."
+                description: "Pega aquí la URL prefirmada generada en el paso 1"
+        requestBody:
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        responses:
+          '200':
+            description: OK
+
+  /file/start-processing/{fileIdImport}:
+    post:
+      tags: [Import]
+      summary: 3. StartFileProcessByPublicId
+      parameters:
+        - name: fileIdImport
+          in: path
+          required: true
+          schema: {type: string}
+      responses:
+        '200': {description: OK}
+
+  /file/process/{processId}/status:
+    get:
+      tags: [Import]
+      summary: 4. GetProcessStatusByPublicId
+      parameters:
+        - name: processId
+          in: path
+          required: true
+          schema: {type: string}
+      responses:
+        '200': {description: OK}
+
+  /file/result/{fileIdImport}:
+    get:
+      tags: [Import]
+      summary: 5. GetProcessInformationByPublicId
+      parameters:
+        - name: fileIdImport
+          in: path
+          required: true
+          schema: {type: string}
+      responses:
+        '200': {description: OK}
+
+  /file/worker/info/{workerPublicId}:
+    get:
+      tags: [Import]
+      summary: 5.1. GetInfoWorkerByPublicId
+      parameters:
+        - name: workerPublicId
+          in: path
+          required: true
+          schema: {type: string}
+      responses:
+        '200': {description: OK}
+
+  /file/worker/status/{workerPublicId}:
+    put:
+      tags: [Import]
+      summary: 6. UpdateWorkerStatusByPublicId
+      parameters:
+        - name: workerPublicId
+          in: path
+          required: true
+          schema: {type: string}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example: {"status": "completed"}
+      responses:
+        '200': {description: OK}
+
+  /file/worker/{workerPublicId}/partial-errors:
+    post:
+      tags: [Import]
+      summary: 6.1 NotifyASpecificRecordByPublicId
+      parameters:
+        - name: workerPublicId
+          in: path
+          required: true
+          schema: {type: string}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example: {"failedRecords": [1,2], "message": "Error validando el RUC"}
+      responses:
+        '200': {description: OK}
+
+  # --- CARPETA: EXPORT ---
+  /file/start-export:
+    post:
+      tags: [Export]
+      summary: 1. ExportFile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200': {description: OK}
+
+  # --- CARPETA: PROCESS TYPE ---
+  /process-type:
+    get:
+      tags: [ProcessType]
+      summary: GetAllProcessType
+      responses:
+        '200': {description: OK}
+    post:
+      tags: [ProcessType]
+      summary: CreateNewProcessType
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201': {description: Created}
+
+  /process-type/{processTypePublicId}:
+    get:
+      tags: [ProcessType]
+      summary: GetProcessTypeByPublicId
+      parameters:
+        - name: processTypePublicId
+          in: path
+          required: true
+          schema: {type: string}
+      responses:
+        '200': {description: OK}
+    put:
+      tags: [ProcessType]
+      summary: UpdateProcessTypeByPublicId
+      parameters:
+        - name: processTypePublicId
+          in: path
+          required: true
+          schema: {type: string}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200': {description: OK}
+    delete:
+      tags: [ProcessType]
+      summary: DeleteProcessTypeByPublicId
+      parameters:
+        - name: processTypePublicId
+          in: path
+          required: true
+          schema: {type: string}
+      responses:
+        '204': {description: No Content}
