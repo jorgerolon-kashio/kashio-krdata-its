@@ -2,13 +2,19 @@
 # One of: logs_bucket, default_logs_bucket_behavior, or logging CLOUD_LOGGING_ONLY/NONE.
 # See: https://cloud.google.com/build/docs/securing-builds/configure-service-accounts
 #
-# Artifact Registry: Docker repository _REPO must exist or push fails (name unknown: Repository not found).
-# Create once (adjust --location to match _AR_HOSTNAME, e.g. us vs europe-west1):
-#   gcloud artifacts repositories create krdata --repository-format=docker --location=us --project=PROJECT_ID
-# Or set trigger substitution _REPO to an existing Docker repo in that project/region.
+# Option B — use an Artifact Registry Docker repo that already exists (no new repo):
+# Console: Artifact Registry → copy "Registry URL" host (e.g. europe-west1-docker.pkg.dev)
+#           and the repository name (e.g. cloud-run-source-deploy).
+# Trigger: Edit trigger → Substitution variables → add/override:
+#   _AR_HOSTNAME = that host
+#   _REPO        = that repository name
+#   _IMAGE       = krdata-portal (or any image name; must be unique inside that repo)
+#
+# Default below matches the usual Cloud Run–created Docker repo in europe-west1.
+# If your repo is multi-region US, set _AR_HOSTNAME to us-docker.pkg.dev in the trigger.
 substitutions:
-  _AR_HOSTNAME: us-docker.pkg.dev
-  _REPO: krdata
+  _AR_HOSTNAME: europe-west1-docker.pkg.dev
+  _REPO: cloud-run-source-deploy
   _IMAGE: krdata-portal
 
 steps:
