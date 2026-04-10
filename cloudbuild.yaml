@@ -1,6 +1,11 @@
 # Cloud Build: required when the trigger uses a custom build.service_account.
 # One of: logs_bucket, default_logs_bucket_behavior, or logging CLOUD_LOGGING_ONLY/NONE.
 # See: https://cloud.google.com/build/docs/securing-builds/configure-service-accounts
+#
+# Artifact Registry: Docker repository _REPO must exist or push fails (name unknown: Repository not found).
+# Create once (adjust --location to match _AR_HOSTNAME, e.g. us vs europe-west1):
+#   gcloud artifacts repositories create krdata --repository-format=docker --location=us --project=PROJECT_ID
+# Or set trigger substitution _REPO to an existing Docker repo in that project/region.
 substitutions:
   _AR_HOSTNAME: us-docker.pkg.dev
   _REPO: krdata
