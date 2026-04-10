@@ -1,0 +1,25 @@
+# Cloud Build: required when the trigger uses a custom build.service_account.
+# One of: logs_bucket, default_logs_bucket_behavior, or logging CLOUD_LOGGING_ONLY/NONE.
+# See: https://cloud.google.com/build/docs/securing-builds/configure-service-accounts
+substitutions:
+  _AR_HOSTNAME: us-docker.pkg.dev
+  _REPO: krdata
+  _IMAGE: krdata-portal
+
+steps:
+  - name: gcr.io/cloud-builders/docker
+    id: build
+    args:
+      - build
+      - '-t'
+      - '$_AR_HOSTNAME/$PROJECT_ID/$_REPO/$_IMAGE:$SHORT_SHA'
+      - '-t'
+      - '$_AR_HOSTNAME/$PROJECT_ID/$_REPO/$_IMAGE:latest'
+      - .
+
+images:
+  - '$_AR_HOSTNAME/$PROJECT_ID/$_REPO/$_IMAGE:$SHORT_SHA'
+  - '$_AR_HOSTNAME/$PROJECT_ID/$_REPO/$_IMAGE:latest'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
