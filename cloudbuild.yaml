@@ -22,4 +22,7 @@ images:
   - '$_AR_HOSTNAME/$PROJECT_ID/$_REPO/$_IMAGE:latest'
 
 options:
+  # Required when the trigger uses a custom service account (see GCP error).
   logging: CLOUD_LOGGING_ONLY
+  # Option (b): regional default bucket for build logs (works with custom SA).
+  defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
