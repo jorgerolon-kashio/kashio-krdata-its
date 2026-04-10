@@ -11,6 +11,10 @@
 # Alternative without this file: use the default Cloud Build service account
 # (…@cloudbuild.gserviceaccount.com) and Dockerfile-only trigger.
 
+# Top-level logs bucket satisfies API rule (a) when using a custom build SA.
+# $PROJECT_ID is a built-in substitution (default Cloud Build logs bucket name).
+logsBucket: gs://${PROJECT_ID}_cloudbuild
+
 options:
   logging: CLOUD_LOGGING_ONLY
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
