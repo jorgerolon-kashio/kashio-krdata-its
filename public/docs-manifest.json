@@ -1,22 +1,7 @@
 [
   {
-    "name": "Kaudit",
-    "path": "/docs/kaudit.yaml",
-    "icon": "shield"
-  },
-  {
-    "name": "Kbatch-v1",
-    "path": "/docs/kbatch-v1.yaml",
-    "icon": "file-text"
-  },
-  {
     "name": "Krdata",
     "path": "/docs/krdata.yaml",
     "icon": "database"
-  },
-  {
-    "name": "Ksec_service_openapi 3",
-    "path": "/docs/ksec_service_openapi 3.yaml",
-    "icon": "lock"
   }
 ]

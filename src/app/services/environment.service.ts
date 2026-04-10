@@ -4,13 +4,13 @@ import { Injectable, signal } from '@angular/core';
     providedIn: 'root'
 })
 export class EnvironmentService {
-    private readonly ENV_PLACEHOLDER = 'IT-KBATCH-ENV_PLACEHOLDER';
-    private readonly STORAGE_KEY = 'it-kbatch-selected-env';
+    private readonly ENV_PLACEHOLDER = 'IT-KRDATA-ENV_PLACEHOLDER';
+    private readonly STORAGE_KEY = 'it-krdata-selected-env';
 
-    private readonly DOMAIN_PE_PLACEHOLDER = 'IT-KBATCH-DOMAIN_PE_PLACEHOLDER';
-    private readonly DOMAIN_DEV_PLACEHOLDER = 'IT-KBATCH-DOMAIN_DEV_PLACEHOLDER';
-    private readonly DOMAIN_MX_PLACEHOLDER = 'IT-KBATCH-DOMAIN_MX_PLACEHOLDER';
-    private readonly DOMAIN_CL_PLACEHOLDER = 'IT-KBATCH-DOMAIN_CL_PLACEHOLDER';
+    private readonly DOMAIN_PE_PLACEHOLDER = 'IT-KRDATA-DOMAIN_PE_PLACEHOLDER';
+    private readonly DOMAIN_DEV_PLACEHOLDER = 'IT-KRDATA-DOMAIN_DEV_PLACEHOLDER';
+    private readonly DOMAIN_MX_PLACEHOLDER = 'IT-KRDATA-DOMAIN_MX_PLACEHOLDER';
+    private readonly DOMAIN_CL_PLACEHOLDER = 'IT-KRDATA-DOMAIN_CL_PLACEHOLDER';
 
     private readonly DOMAIN_PE = this.DOMAIN_PE_PLACEHOLDER.includes('PLACEHOLDER') ? 'kashio.com.pe' : this.DOMAIN_PE_PLACEHOLDER;
     private readonly DOMAIN_DEV = this.DOMAIN_DEV_PLACEHOLDER.includes('PLACEHOLDER') ? 'kashio-dev.net' : this.DOMAIN_DEV_PLACEHOLDER;
@@ -35,7 +35,7 @@ export class EnvironmentService {
         const cleaned = envSource.replace(/[{}]/g, '').trim();
         let envList = cleaned.split(',')
             .map((e: string) => e.trim().toLowerCase())
-            .filter((e: string) => e.length > 0 && e !== 'it-kbatch-env_placeholder');
+            .filter((e: string) => e.length > 0 && e !== 'it-krdata-env_placeholder');
 
         this.environments.set(envList);
 

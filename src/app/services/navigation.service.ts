@@ -8,12 +8,12 @@ import { filter } from 'rxjs/operators';
 export class NavigationService {
     private router = inject(Router);
 
-    private readonly APP_NAME = 'IT-KOBS-APP_NAME_PLACEHOLDER'.includes('PLACEHOLDER') ? 'KBATCH' : 'IT-KOBS-APP_NAME_PLACEHOLDER';
+    private readonly APP_NAME = 'IT-KRDATA-APP_NAME_PLACEHOLDER'.includes('PLACEHOLDER') ? 'KRDATA' : 'IT-KRDATA-APP_NAME_PLACEHOLDER';
 
-    private currentTitle = new BehaviorSubject<string>('Service Validation Dashboard');
+    private currentTitle = new BehaviorSubject<string>('KRDATA Overview');
     currentTitle$ = this.currentTitle.asObservable();
 
-    private breadcrumbs = new BehaviorSubject<string[]>([this.APP_NAME, 'Overview Dashboard']);
+    private breadcrumbs = new BehaviorSubject<string[]>([this.APP_NAME, 'Overview']);
     breadcrumbs$ = this.breadcrumbs.asObservable();
 
     constructor() {
@@ -39,8 +39,8 @@ export class NavigationService {
     private updateFromRouteData() {
         try {
             let route = this.router.routerState.root;
-            let title = 'Service Validation Dashboard';
-            let breadcrumbs = [this.APP_NAME, 'Overview Dashboard'];
+            let title = 'KRDATA Overview';
+            let breadcrumbs = [this.APP_NAME, 'Overview'];
 
             // Traverse to the deepest active route to find data
             while (route.firstChild) {
@@ -68,8 +68,8 @@ export class NavigationService {
         } catch (error) {
             console.error('⚠️ Error updating navigation data:', error);
             // Fallback to default values to avoid UI break
-            this.currentTitle.next('Service Validation Dashboard');
-            this.breadcrumbs.next([this.APP_NAME, 'Overview Dashboard']);
+            this.currentTitle.next('KRDATA Overview');
+            this.breadcrumbs.next([this.APP_NAME, 'Overview']);
         }
     }
 }

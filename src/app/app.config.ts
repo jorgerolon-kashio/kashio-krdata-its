@@ -51,7 +51,11 @@ import {
   Terminal,
   Info,
   ChevronRight,
-  FileText
+  FileText,
+  Globe,
+  Wallet,
+  Building,
+  GitBranch
 } from 'lucide-angular';
 
 export function MSALInstanceFactory(): IPublicClientApplication {
@@ -67,7 +71,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
 
 export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
   const protectedResourceMap = new Map<string, Array<string>>();
-  const API_BASE_URL = 'IT-KOBS-API_BASE_URL_PLACEHOLDER'.includes('PLACEHOLDER') ? 'https://kobs-svc-dev-162532850005.us-central1.run.app' : 'IT-KOBS-API_BASE_URL_PLACEHOLDER';
+  const API_BASE_URL = 'IT-KRDATA-API_BASE_URL_PLACEHOLDER'.includes('PLACEHOLDER') ? 'http://localhost:3001' : 'IT-KRDATA-API_BASE_URL_PLACEHOLDER';
   protectedResourceMap.set(`${API_BASE_URL}/api/*`, ['User.Read']);
 
   return {
@@ -135,7 +139,11 @@ export const appConfig: ApplicationConfig = {
         Terminal,
         Info,
         ChevronRight,
-        FileText
+        FileText,
+        Globe,
+        Wallet,
+        Building,
+        GitBranch
       })
     )
   ]

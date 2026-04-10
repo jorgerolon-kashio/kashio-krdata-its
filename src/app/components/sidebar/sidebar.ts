@@ -213,12 +213,14 @@ import { EnvironmentService } from '../../services/environment.service';
 export class SidebarComponent {
   public envService = inject(EnvironmentService);
 
-  readonly appName = 'IT-KBATCH-APP_NAME_PLACEHOLDER'.includes('PLACEHOLDER') ? 'KBATCH' : 'IT-KBATCH-APP_NAME_PLACEHOLDER';
-  readonly appVersion = 'IT-KBATCH-APP_VERSION_PLACEHOLDER'.includes('PLACEHOLDER') ? 'v1.0.0.0-dev' : 'IT-KBATCH-APP_VERSION_PLACEHOLDER';
+  readonly appName = 'IT-KRDATA-APP_NAME_PLACEHOLDER'.includes('PLACEHOLDER') ? 'KRDATA' : 'IT-KRDATA-APP_NAME_PLACEHOLDER';
+  readonly appVersion = 'IT-KRDATA-APP_VERSION_PLACEHOLDER'.includes('PLACEHOLDER') ? 'v1.0.0.0-dev' : 'IT-KRDATA-APP_VERSION_PLACEHOLDER';
   readonly menuItems = [
-    { label: 'Overview Dashboard', icon: 'layout-dashboard', path: '/' },
-    { label: 'ArgoCD Status', icon: 'refresh-cw', path: '/argocd' },
-    { label: 'Compass Data', icon: 'compass', path: '/compass' },
+    { label: 'Overview', icon: 'layout-dashboard', path: '/' },
+    { label: 'Geography', icon: 'globe', path: '/geography' },
+    { label: 'Financial', icon: 'wallet', path: '/financial' },
+    { label: 'Business', icon: 'building', path: '/business' },
+    { label: 'Process', icon: 'git-branch', path: '/process' },
     { label: 'API Playground', icon: 'play-circle', path: '/api-test' },
   ];
 

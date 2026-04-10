@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "kbatch-portal": {
+    "krdata-portal": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:class": {
@@ -89,10 +89,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "kbatch-portal:build:production"
+              "buildTarget": "krdata-portal:build:production"
             },
             "development": {
-              "buildTarget": "kbatch-portal:build:development"
+              "buildTarget": "krdata-portal:build:development"
             }
           },
           "defaultConfiguration": "development"

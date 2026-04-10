@@ -1,0 +1,82 @@
+openapi: 3.0.0
+info:
+  title: KRDATA API
+  description: KRDATA reference data API for geography, financial, business and process domains.
+  version: 1.0.0
+servers:
+  - url: "{{Base_url}}/api/v1"
+    description: KRDATA base URL
+
+paths:
+  /geography/countries:
+    get:
+      tags: [Geography]
+      summary: List countries
+      responses:
+        '200': { description: OK }
+  /geography/territories:
+    get:
+      tags: [Geography]
+      summary: List territories
+      responses:
+        '200': { description: OK }
+  /geography/plazas:
+    get:
+      tags: [Geography]
+      summary: List plazas
+      responses:
+        '200': { description: OK }
+  /geography/timezones:
+    get:
+      tags: [Geography]
+      summary: List timezones
+      responses:
+        '200': { description: OK }
+  /financial/currencies:
+    get:
+      tags: [Financial]
+      summary: List currencies
+      responses:
+        '200': { description: OK }
+  /financial/financial-institutions:
+    get:
+      tags: [Financial]
+      summary: List financial institutions
+      responses:
+        '200': { description: OK }
+  /financial/payment-method-types:
+    get:
+      tags: [Financial]
+      summary: List payment method types
+      responses:
+        '200': { description: OK }
+  /business/languages:
+    get:
+      tags: [Business]
+      summary: List languages
+      responses:
+        '200': { description: OK }
+  /business/industries:
+    get:
+      tags: [Business]
+      summary: List industries
+      responses:
+        '200': { description: OK }
+  /business/identity-document-types:
+    get:
+      tags: [Business]
+      summary: List identity document types
+      responses:
+        '200': { description: OK }
+  /process/process-types:
+    get:
+      tags: [Process]
+      summary: List process types
+      responses:
+        '200': { description: OK }
+  /process/process-statuses:
+    get:
+      tags: [Process]
+      summary: List process statuses
+      responses:
+        '200': { description: OK }

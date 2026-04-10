@@ -16,7 +16,7 @@ import { takeUntil } from 'rxjs/operators';
   styleUrl: './app.css'
 })
 export class App implements OnInit {
-  protected readonly title = signal(('IT-KOBS-APP_NAME_PLACEHOLDER'.includes('PLACEHOLDER') ? 'kbatch' : 'IT-KOBS-APP_NAME_PLACEHOLDER').toLowerCase() + '-portal');
+  protected readonly title = signal(('IT-KRDATA-APP_NAME_PLACEHOLDER'.includes('PLACEHOLDER') ? 'krdata' : 'IT-KRDATA-APP_NAME_PLACEHOLDER').toLowerCase() + '-portal');
   private readonly _destroying$ = new Subject<void>();
 
   constructor(
