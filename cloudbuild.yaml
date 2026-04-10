@@ -1,0 +1,23 @@
+# Same pattern for all Kashio frontends on Cloud Run + custom build service account:
+# the API requires explicit logging when service_account is set.
+#
+# In the Cloud Build trigger (or Cloud Run “Edit continuous deployment”):
+# - Configuration: Cloud Build configuration file → cloudbuild.yaml
+# - Substitution variable (required):
+#     _IMAGE = full Artifact Registry image reference, e.g.
+#     europe-west1-docker.pkg.dev/PROJECT/cloud-run-source-deploy/SERVICE_NAME:$SHORT_SHA
+#   Cloud Run often pre-fills this when you link the service to the repo.
+#
+# Alternative without this file: use the default Cloud Build service account
+# (…@cloudbuild.gserviceaccount.com) and Dockerfile-only trigger.
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+  defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
+
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args: ['build', '-t', '$_IMAGE', '.']
+
+images:
+  - $_IMAGE
