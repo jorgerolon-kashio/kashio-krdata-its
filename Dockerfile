@@ -37,16 +37,16 @@ ENV IT-KRDATA-DOMAIN_CL=""
 CMD ["/bin/sh", "-c", "\
     echo 'Injecting Environment Variables...'; \
     for file in /usr/share/nginx/html/*.js; do \
-      sed -i \"s|IT-KRDATA-API_BASE_URL_PLACEHOLDER|$(printenv IT-KRDATA-API_BASE_URL)|g\" \"$file\"; \
-      sed -i \"s|IT-KINFRA-CLIENT_ID_PLACEHOLDER|$(printenv IT-KINFRA-CLIENT_ID)|g\" \"$file\"; \
-      sed -i \"s|IT-KINFRA-AUTHORITY_PLACEHOLDER|$(printenv IT-KINFRA-AUTHORITY)|g\" \"$file\"; \
-      sed -i \"s|IT-KRDATA-APP_NAME_PLACEHOLDER|$(printenv IT-KRDATA-APP_NAME)|g\" \"$file\"; \
-      sed -i \"s|IT-KRDATA-APP_VERSION_PLACEHOLDER|$(printenv IT-KRDATA-APP_VERSION)|g\" \"$file\"; \
-      sed -i \"s|IT-KRDATA-ENV_PLACEHOLDER|$(printenv IT-KRDATA-ENV)|g\" \"$file\"; \
-      sed -i \"s|IT-KRDATA-DOMAIN_PE_PLACEHOLDER|$(printenv IT-KRDATA-DOMAIN_PE)|g\" \"$file\"; \
-      sed -i \"s|IT-KRDATA-DOMAIN_DEV_PLACEHOLDER|$(printenv IT-KRDATA-DOMAIN_DEV)|g\" \"$file\"; \
-      sed -i \"s|IT-KRDATA-DOMAIN_MX_PLACEHOLDER|$(printenv IT-KRDATA-DOMAIN_MX)|g\" \"$file\"; \
-      sed -i \"s|IT-KRDATA-DOMAIN_CL_PLACEHOLDER|$(printenv IT-KRDATA-DOMAIN_CL)|g\" \"$file\"; \
+      [ -n \"$(printenv IT-KRDATA-API_BASE_URL)\" ] && sed -i \"s|IT-KRDATA-API_BASE_URL_PLACEHOLDER|$(printenv IT-KRDATA-API_BASE_URL)|g\" \"$file\"; \
+      [ -n \"$(printenv IT-KINFRA-CLIENT_ID)\" ] && sed -i \"s|IT-KINFRA-CLIENT_ID_PLACEHOLDER|$(printenv IT-KINFRA-CLIENT_ID)|g\" \"$file\"; \
+      [ -n \"$(printenv IT-KINFRA-AUTHORITY)\" ] && sed -i \"s|IT-KINFRA-AUTHORITY_PLACEHOLDER|$(printenv IT-KINFRA-AUTHORITY)|g\" \"$file\"; \
+      [ -n \"$(printenv IT-KRDATA-APP_NAME)\" ] && sed -i \"s|IT-KRDATA-APP_NAME_PLACEHOLDER|$(printenv IT-KRDATA-APP_NAME)|g\" \"$file\"; \
+      [ -n \"$(printenv IT-KRDATA-APP_VERSION)\" ] && sed -i \"s|IT-KRDATA-APP_VERSION_PLACEHOLDER|$(printenv IT-KRDATA-APP_VERSION)|g\" \"$file\"; \
+      [ -n \"$(printenv IT-KRDATA-ENV)\" ] && sed -i \"s|IT-KRDATA-ENV_PLACEHOLDER|$(printenv IT-KRDATA-ENV)|g\" \"$file\"; \
+      [ -n \"$(printenv IT-KRDATA-DOMAIN_PE)\" ] && sed -i \"s|IT-KRDATA-DOMAIN_PE_PLACEHOLDER|$(printenv IT-KRDATA-DOMAIN_PE)|g\" \"$file\"; \
+      [ -n \"$(printenv IT-KRDATA-DOMAIN_DEV)\" ] && sed -i \"s|IT-KRDATA-DOMAIN_DEV_PLACEHOLDER|$(printenv IT-KRDATA-DOMAIN_DEV)|g\" \"$file\"; \
+      [ -n \"$(printenv IT-KRDATA-DOMAIN_MX)\" ] && sed -i \"s|IT-KRDATA-DOMAIN_MX_PLACEHOLDER|$(printenv IT-KRDATA-DOMAIN_MX)|g\" \"$file\"; \
+      [ -n \"$(printenv IT-KRDATA-DOMAIN_CL)\" ] && sed -i \"s|IT-KRDATA-DOMAIN_CL_PLACEHOLDER|$(printenv IT-KRDATA-DOMAIN_CL)|g\" \"$file\"; \
     done; \
     echo 'Done. Starting Nginx...'; \
     nginx -g 'daemon off;' \
