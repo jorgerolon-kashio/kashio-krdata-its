@@ -12,7 +12,7 @@ export class KrdataApiService {
 
   get API_BASE_URL(): string {
     const value = this.API_BASE_PLACEHOLDER.includes('PLACEHOLDER')
-      ? 'http://localhost:3001'
+      ? 'https://krdata-ms-215989210525.europe-west1.run.app'
       : this.API_BASE_PLACEHOLDER;
     return `${value.replace(/\/$/, '')}/api/v1`;
   }
